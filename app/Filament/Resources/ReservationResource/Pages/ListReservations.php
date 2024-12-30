@@ -14,6 +14,10 @@ class ListReservations extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
+            Actions\Action::make('export')
+                ->label('Export to Excel')
+                ->url(route('export.reservations'))
+                ->icon('heroicon-o-download'),
         ];
     }
 }
