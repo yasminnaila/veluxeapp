@@ -37,10 +37,13 @@ class ReservationResource extends Resource
                 ->label('Kamar'),
             DatePicker::make('check_in')
                 ->required()
-                ->label('Check-In'),
+                ->label('Check-In')
+                ->rules(['after_or_equal:today']), // Tidak bisa pilih tanggal sebelum hari ini
             DatePicker::make('check_out')
                 ->required()
-                ->label('Check-Out'),
+                ->label('Check-Out')
+                ->rules(['after:check_in']), // Check-Out harus setelah Check-In
+
         ]);
     }
 

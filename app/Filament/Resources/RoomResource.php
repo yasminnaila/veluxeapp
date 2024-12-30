@@ -36,7 +36,8 @@ class RoomResource extends Resource
             TextInput::make('price')
                 ->numeric()
                 ->required()
-                ->label('Harga'),
+                ->label('Harga')
+                ->rules(['min:0']), // Harga minimal 0
             Select::make('status')
                 ->options([
                     'available' => 'Tersedia',
@@ -44,6 +45,7 @@ class RoomResource extends Resource
                 ])
                 ->required()
                 ->label('Status'),
+
         ]);
 
     }

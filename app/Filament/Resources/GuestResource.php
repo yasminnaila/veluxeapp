@@ -23,22 +23,23 @@ class GuestResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
     public static function form(Form $form): Form
-    {
-        return $form
-            ->schema([
-                TextInput::make('name')
-                    ->required()
-                    ->label('Nama Penyewa'),
-                TextInput::make('contact')
-                    ->required()
-                    ->label('Kontak'),
-                TextInput::make('email')
-                    ->email()
-                    ->unique()
-                    ->required()
-                    ->label('Email'),
-            ]);
-    }
+{
+    return $form
+        ->schema([
+            TextInput::make('name')
+                ->required()
+                ->label('Nama Penyewa'),
+            TextInput::make('contact')
+                ->required()
+                ->label('Kontak')
+                ->rules(['regex:/^\+?[\d\s-]+$/']), // Validasi format kontak
+            TextInput::make('email')
+                ->email()
+                ->unique(ignoreRecord: true) // Pastikan email unik
+                ->required()
+                ->label('Email'),
+        ]);
+}
 
     public static function table(Table $table): Table
     {
