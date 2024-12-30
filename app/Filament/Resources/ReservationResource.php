@@ -12,6 +12,10 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\DatePicker;
+use Maatwebsite\Excel\Facades\Excel;
+use Filament\Tables\Columns\TextColumn;
 
 class ReservationResource extends Resource
 {
@@ -22,35 +26,44 @@ class ReservationResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                //
-            ]);
+        ->schema([
+            Select::make('guests_id')
+                ->relationship('guests', 'name')
+                ->required()
+                ->label('Penyewa'),
+            Select::make('room_id')
+                ->relationship('room', 'name')
+                ->required()
+                ->label('Kamar'),
+            DatePicker::make('check_in')
+                ->required()
+                ->label('Check-In'),
+            DatePicker::make('check_out')
+                ->required()
+                ->label('Check-Out'),
+        ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
-                //
-            ])
-            ->filters([
-                //
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
-            ]);
+        ->columns([
+            TextColumn::make('guests.name')->label('Penyewa'),
+            TextColumn::make('room.name')->label('Kamar'),
+            TextColumn::make('check_in')->label('Check-In'),
+            TextColumn::make('check_out')->label('Check-Out'),
+        ])
+        ->filters([]);
+
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -58,5 +71,5 @@ class ReservationResource extends Resource
             'create' => Pages\CreateReservation::route('/create'),
             'edit' => Pages\EditReservation::route('/{record}/edit'),
         ];
-    }    
+    }
 }
