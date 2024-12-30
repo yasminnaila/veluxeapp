@@ -8,8 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Guest extends Model
 {
     use HasFactory;
-    public function reservations()
-{
-    return $this->hasMany(Reservation::class);
-}
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'name',
+        'email',
+        'contact',
+    ];
 }
