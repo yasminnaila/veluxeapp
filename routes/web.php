@@ -15,7 +15,7 @@ use App\Http\Controllers\ExportController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('filament.pages.dashboard');
 });
 
 Route::get('export-reservations', [ExportController::class, 'exportReservations'])->name('export.reservations');
