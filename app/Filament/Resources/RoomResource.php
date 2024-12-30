@@ -12,6 +12,10 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\TextInput;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\Select;
+use Filament\Tables\Columns\BadgeColumn;
 
 class RoomResource extends Resource
 {
@@ -22,35 +26,52 @@ class RoomResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                //
-            ]);
+        ->schema([
+            TextInput::make('name')
+                ->required()
+                ->label('Nama Kamar'),
+            TextInput::make('type')
+                ->required()
+                ->label('Tipe Kamar'),
+            TextInput::make('price')
+                ->numeric()
+                ->required()
+                ->label('Harga'),
+            Select::make('status')
+                ->options([
+                    'available' => 'Tersedia',
+                    'unavailable' => 'Tidak Tersedia',
+                ])
+                ->required()
+                ->label('Status'),
+        ]);
+
     }
 
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
-                //
-            ])
-            ->filters([
-                //
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
-            ]);
+        ->columns([
+            TextColumn::make('name')->label('Nama Kamar')->searchable(),
+            TextColumn::make('type')->label('Tipe'),
+            TextColumn::make('price')->label('Harga'),
+            BadgeColumn::make('status')
+                ->enum([
+                    'available' => 'Tersedia',
+                    'unavailable' => 'Tidak Tersedia',
+                ])->label('Status'),
+        ])
+        ->filters([]);
+
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -58,5 +79,5 @@ class RoomResource extends Resource
             'create' => Pages\CreateRoom::route('/create'),
             'edit' => Pages\EditRoom::route('/{record}/edit'),
         ];
-    }    
+    }
 }
