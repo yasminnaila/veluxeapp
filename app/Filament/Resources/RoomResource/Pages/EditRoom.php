@@ -5,6 +5,7 @@ namespace App\Filament\Resources\RoomResource\Pages;
 use App\Filament\Resources\RoomResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\EditRecord;
+use App\Helpers\ActivityLogger;
 
 class EditRoom extends EditRecord
 {
@@ -16,4 +17,5 @@ class EditRoom extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
+
 }

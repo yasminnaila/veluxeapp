@@ -5,6 +5,7 @@ namespace App\Filament\Resources\GuestResource\Pages;
 use App\Filament\Resources\GuestResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\EditRecord;
+use App\Helpers\ActivityLogger;
 
 class EditGuest extends EditRecord
 {
@@ -16,4 +17,6 @@ class EditGuest extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
+
 }
+
