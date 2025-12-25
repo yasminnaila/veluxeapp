@@ -1,0 +1,36 @@
+[33m4ed2a82[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32manita_crudUpdate[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/anita_crudUpdate[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m Merge pull request #42 from yasminnaila/fitur/activity-logs
+[33m00673ea[m[33m ([m[1;31morigin/fitur/activity-logs[m[33m)[m fitur activity logs
+[33me3f78a5[m fitur activity logs
+[33mb39a69c[m Add Reservations By Year dashboard widget
+[33m4299554[m Add KpiCards widget with reservations and guests statistics
+[33m553df53[m Merge pull request #41 from yasminnaila/anita_filtertahun_occupancyrate
+[33mbdf07f4[m[33m ([m[1;31morigin/anita_filtertahun_occupancyrate[m[33m)[m add year filter to occupancy rate widget
+[33mf76e723[m Merge pull request #40 from yasminnaila/devina_occupancyrate_fix
+[33m41d770e[m[33m ([m[1;31morigin/devina_occupancyrate_fix[m[33m)[m Add occupancy rate widget
+[33m04617c5[m Merge pull request #13 from yasminnaila/yustika
+[33m9da7375[m[33m ([m[1;31morigin/yustika[m[33m)[m ganti email user
+[33mdd74d50[m Merge pull request #12 from yasminnaila/devina
+[33maf931a7[m[33m ([m[1;31morigin/devina[m[33m)[m tambah data dummy
+[33m35925fe[m Merge pull request #11 from yasminnaila/yasmin
+[33m35ff249[m[33m ([m[1;31morigin/yasmin[m[33m)[m rute ulang
+[33mf9cac4e[m Merge pull request #10 from yasminnaila/yasmin
+[33m5b87695[m merubah brand
+[33m2958072[m Merge pull request #9 from yasminnaila/yasmin
+[33m28e001f[m menambah fitur export pdf
+[33ma3cdeb6[m Merge pull request #8 from yasminnaila/yasmin
+[33mf512b9b[m menambah fitur export excel
+[33m5f7c944[m Merge pull request #7 from yasminnaila/yasmin
+[33m222027d[m menambahkan validasi
+[33mf203e75[m Merge pull request #6 from yasminnaila/devina
+[33m82672f2[m tambah resource reservation
+[33m1eedeca[m Merge pull request #5 from yasminnaila/anita
+[33m09a8571[m[33m ([m[1;31morigin/anita[m[33m)[m menambah resource room
+[33mcbfd5ab[m Merge pull request #4 from yasminnaila/yustika
+[33mfc7eec6[m tambah resource guest
+[33m652a164[m Merge pull request #3 from yasminnaila/anita
+[33mae1af53[m menambahkan model reservasi
+[33m383ef83[m Merge pull request #2 from yasminnaila/devina
+[33mf9ede7e[m Tambah model room
+[33m7a3e335[m Merge pull request #1 from yasminnaila/yasmin
+[33m7eb3f59[m Tambah Seeder
+[33mb0cd210[m first commit
