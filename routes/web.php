@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\App;
 use Maatwebsite\Excel\Facades\Excel;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Reservation;
+use App\Http\Controllers\ActivityLogExportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,3 +59,6 @@ Route::get('/export/reservations/pdf', function () {
     // Download file
     return $pdf->download('reservations.pdf');
 })->name('export.reservations.pdf');
+
+Route::get('/export/activity-logs/excel', [ActivityLogExportController::class, 'exportExcel'])
+->name('export.activity_logs.excel');
