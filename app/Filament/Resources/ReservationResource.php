@@ -16,6 +16,10 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\DatePicker;
 use Maatwebsite\Excel\Facades\Excel;
 use Filament\Tables\Columns\TextColumn;
+use App\Helpers\ActivityLogger;
+use Filament\Resources\Pages\ListRecords;
+use Filament\Resources\Pages\CreateRecord;
+use Filament\Resources\Pages\EditRecord;
 
 class ReservationResource extends Resource
 {
@@ -26,38 +30,56 @@ class ReservationResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-        ->schema([
-            Select::make('guests_id')
-                ->relationship('guests', 'name')
-                ->required()
-                ->label('Penyewa'),
-            Select::make('room_id')
-                ->relationship('room', 'name')
-                ->required()
-                ->label('Kamar'),
-            DatePicker::make('check_in')
-                ->required()
-                ->label('Check-In')
-                ->rules(['after_or_equal:today']), // Tidak bisa pilih tanggal sebelum hari ini
-            DatePicker::make('check_out')
-                ->required()
-                ->label('Check-Out')
-                ->rules(['after:check_in']), // Check-Out harus setelah Check-In
+            ->schema([
+                Select::make('guests_id')
+                    ->relationship('guests', 'name')
+                    ->required()
+                    ->label('Penyewa'),
+                Select::make('room_id')
+                    ->relationship('room', 'name')
+                    ->required()
+                    ->label('Kamar'),
+                DatePicker::make('check_in')
+                    ->required()
+                    ->label('Check-In')
+                    ->rules(['after_or_equal:today']), // Tidak bisa pilih tanggal sebelum hari ini
+                DatePicker::make('check_out')
+                    ->required()
+                    ->label('Check-Out')
+                    ->rules(['after:check_in']), // Check-Out harus setelah Check-In
 
-        ]);
+            ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
-        ->columns([
-            TextColumn::make('guests.name')->label('Penyewa'),
-            TextColumn::make('room.name')->label('Kamar'),
-            TextColumn::make('check_in')->label('Check-In'),
-            TextColumn::make('check_out')->label('Check-Out'),
-        ])
-        ->filters([]);
+            ->columns([
+                TextColumn::make('guests.name')->label('Penyewa'),
+                TextColumn::make('room.name')->label('Kamar'),
+                TextColumn::make('check_in')->label('Check-In'),
+                TextColumn::make('check_out')->label('Check-Out'),
+            ])
+            ->filters([
+                //
+            ])
+            // ->actions([
+            //     Tables\Actions\EditAction::make(),
 
+            //     Tables\Actions\DeleteAction::make()
+            //         ->before(function ($record) {
+            //             ActivityLogger::log(
+            //                 'deleted',
+            //                 $record,
+            //                 "Menghapus reservasi #{$record->id}",
+            //                 ['data' => $record->toArray()]
+            //             );
+            //         }),
+            // ]);
+            ->actions([
+                Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(), // tanpa before()
+            ]);
     }
 
     public static function getRelations(): array
