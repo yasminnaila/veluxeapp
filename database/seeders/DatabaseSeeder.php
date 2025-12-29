@@ -23,5 +23,12 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password'), // Replace 'password' with a secure password
             'remember_token' => Str::random(10),
         ]);
+
+        // Panggil GuestSeeder
+        $this->call(GuestSeeder::class);
+        // Panggil RoomSeeder
+        $this->call(RoomSeeder::class);
+        // Panggil ReservationSeeder
+        $this->call(ReservationSeeder::class);
     }
 }
