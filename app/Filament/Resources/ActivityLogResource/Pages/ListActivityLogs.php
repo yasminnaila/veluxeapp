@@ -18,6 +18,11 @@ class ListActivityLogs extends ListRecords
                 ->url(route('export.activity_logs.excel'))
                 ->icon('heroicon-o-download')
                 ->openUrlInNewTab(),
+            Actions\Action::make('exportPdf')
+                ->label('Export PDF')
+                ->url(route('export.activity_logs.pdf'))
+                ->icon('heroicon-o-printer')
+                ->openUrlInNewTab(),
         ];
     }
 

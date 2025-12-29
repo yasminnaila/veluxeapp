@@ -62,3 +62,6 @@ Route::get('/export/reservations/pdf', function () {
 
 Route::get('/export/activity-logs/excel', [ActivityLogExportController::class, 'exportExcel'])
 ->name('export.activity_logs.excel');
+
+Route::get('/export/activity-logs/pdf', [ActivityLogExportController::class, 'exportPdf'])
+->name('export.activity_logs.pdf');
